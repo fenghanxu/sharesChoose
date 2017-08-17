@@ -26,6 +26,7 @@ class ScreenViewController: UIViewController {
         //解档
         solutionList()
         buildUI()
+        print("详情分支")
     }
     
     fileprivate func buildUI() {
