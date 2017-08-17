@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  sharesChonse
+//  Demol
 //
-//  Created by 冯汉栩 on 2017/8/8.
-//  Copyright © 2017年 fenghanxuCompany. All rights reserved.
+//  Created by 冯汉栩 on 17/3/24.
+//  Copyright © 2017年 hanxuFeng. All rights reserved.
 //
 
 import UIKit
@@ -13,9 +13,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    var allowRotation = 0
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        //创建一个window
+        let window = UIWindow()
+        //指定win
+        self.window = window
+        //创建一个控制器
+        let avc = ScreenViewController()
+        //创建nva并把控制器添加到nva
+        let nav = UINavigationController(rootViewController: avc)
+        //把nva添加到win中
+        window.rootViewController = nav
+        //启动win
+        window.makeKeyAndVisible()
         return true
     }
 
@@ -39,6 +51,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        
+        if allowRotation == 1 {
+            
+            if !UIApplication.shared.statusBarOrientation.isPortrait {
+                
+                return UIInterfaceOrientationMask.portrait
+            }else{
+                return UIInterfaceOrientationMask.landscapeLeft
+            }
+            
+        }else{
+            
+            return UIInterfaceOrientationMask.portrait
+        }
+        
     }
 
 
